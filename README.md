@@ -19,6 +19,8 @@ Now the `cfcli` command should be available in your terminal.
 Or if you would like to run it from source use the following command:
 
 ```text
+git clone https://github.com/evoggy/cf-cli.git
+cd cf-cli
 cargo run -- <args>
 ```
 
