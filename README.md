@@ -14,7 +14,7 @@ cd cf-cli
 cargo install
 ```
 
-Now the `cf-cli` command should be available in your terminal.
+Now the `cfcli` command should be available in your terminal.
 
 Or if you would like to run it from source use the following command:
 
@@ -30,12 +30,12 @@ cargo run -- select
 
 ## Usage
 
-To see how to use the CLI type ```cf-cli``` in your terminal and you will get the following help message:
+To see how to use the CLI type ```cfcli``` in your terminal and you will get the following help message:
 
 ```text
 Crazyflie CLI
 
-Usage: cf-cli [OPTIONS] <COMMAND>
+Usage: cfcli [OPTIONS] <COMMAND>
 
 Commands:
   log      Access to the log subsystem
@@ -55,19 +55,19 @@ To use the CLI you must first select which URI to use, this is done by scanning 
 and selecting the one you prefer.
 
 ```text
-cf-cli select
+cfcli select
 ```
 
 Now this URI will be used in all commands until a new one is selected. For instance a parameter
 can be set using the following command:
 
 ```text
-cf-cli param set motorPowerSet.enable 1
+cfcli param set motorPowerSet.enable 1
 ```
 
 And a log variable can be printed using the following command:
 
 ```text
-cf-cli log print stabilizer.roll 100
+cfcli log print stabilizer.roll 100
 
 ```

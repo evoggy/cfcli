@@ -10,6 +10,10 @@ license = "GPL 2.0"
 keywords = ["crazyflie", "cli"]
 categories = ["hardware-support"]
 
+[[bin]]
+name = "cfcli"
+path = "src/main.rs"
+
 [dependencies]
 async_executors = { version="0.4.2", features=["timer", "async_std"] }
 futures-util = "0.3"
