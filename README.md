@@ -10,8 +10,8 @@ intended to be used from any scripts to make the Crazyflie do things, then using
 If you would like to install the CLI, you can do so by running the following command:
 
 ```text
-cd cf-cli
-cargo install
+git clone https://github.com/evoggy/cf-cli.git
+cargo install --path cf-cli
 ```
 
 Now the `cfcli` command should be available in your terminal.
