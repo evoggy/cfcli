@@ -1,12 +1,12 @@
 [package]
-name = "cf-cli"
+name = "cfcli"
 version = "0.1.0"
 edition = "2021"
 authors = ["Marcus Eliasson <marcus@bitcraze.io>"]
-description = "Crazyflie CLI"
+description = "Crazyflie command-line client"
 readme = "README.md"
-repository = "https://github.com/evoggy/cf-cli"
-license = "GPL 2.0"
+repository = "https://github.com/evoggy/cfcli"
+license = "MIT OR Apache-2.0"
 keywords = ["crazyflie", "cli"]
 categories = ["hardware-support"]
 
@@ -28,11 +28,9 @@ async-broadcast = "0.3.4"
 async-std = { version = "1.9.0", features = ["attributes"] }
 
 env_logger = "0.9.0"
-crazyflie-link = { version="0.2.1", default-features = false }
-crazyflie-lib = {git="https://github.com/ataffanel/crazyflie-lib-rs", branch="main"}
+crazyflie-link = { version="0.2.2", default-features = false }
+crazyflie-lib = "0.1.2"
 
-#crazyflie-link = {path="../crazyflie-link-rs/crazyflie-link"}
-#crazyflie-lib = {path="../crazyflie-lib-rs"}
 clap = { version = "4.5.0", features = ["derive"] }
 
 serde = { version = "1.0.141", features = ["derive"] }
