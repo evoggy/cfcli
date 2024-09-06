@@ -175,10 +175,22 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let link_context = crazyflie_link::LinkContext::new(async_executors::AsyncStd);
 
+    let cf_address: [u8; 5] = match u64::from_str_radix(&args.address.replace("0x", ""), 16) {
+        Ok(a) if a <= 0xFFFFFFFFFF => {
+            a.to_be_bytes()[3..].try_into().expect("Could not convert u64 to [u8; 5]")
+        }
+        Ok(_) => {
+          return Err("Invalid address, please provide a valid 5 byte hexadecimal address".into());
+        }
+        Err(_) => {
+            return Err("Invalid address, please provide a valid 5 byte hexadecimal address".into());
+        }
+    };
+
     match &args.command {
         Commands::Scan => {
             // Scan for Crazyflies on the default address
-            let found = link_context.scan([0xE7; 5]).await?;
+            let found = link_context.scan(cf_address).await?;
 
             for uri in found {
                 println!("> {}", uri);
@@ -186,7 +198,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         Commands::Select => {
             // Scan for Crazyflies on the default address
-            let found = link_context.scan([0xE7; 5]).await?;
+            let found = link_context.scan(cf_address).await?;
+
+            if found.is_empty() {
+                println!("No Crazyflies found");
+                return Ok(());
+            }
 
             for (idx, uri) in found.clone().into_iter().enumerate() {
                 println!("[{}] {}", idx, uri);
